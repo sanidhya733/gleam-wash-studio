@@ -197,14 +197,14 @@ export default function Booking() {
                     <h3 className="text-lg font-semibold">Pickup Details</h3>
                     <div>
                       <Label>Pickup Date</Label>
-                      <Popover modal={true}>
+                      <Popover>
                         <PopoverTrigger asChild>
-                          <Button variant="outline" className="w-full justify-start z-10">
+                          <Button variant="outline" className="w-full justify-start">
                             <CalendarIcon className="mr-2 h-4 w-4" />
                             {formData.pickupDate ? format(formData.pickupDate, 'PPP') : 'Select date'}
                           </Button>
                         </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0 z-50" align="start">
+                        <PopoverContent className="w-auto p-0">
                           <Calendar
                             mode="single"
                             selected={formData.pickupDate}
@@ -236,14 +236,14 @@ export default function Booking() {
                     <h3 className="text-lg font-semibold">Delivery Details</h3>
                     <div>
                       <Label>Delivery Date</Label>
-                      <Popover modal={true}>
+                      <Popover>
                         <PopoverTrigger asChild>
-                          <Button variant="outline" className="w-full justify-start z-10">
+                          <Button variant="outline" className="w-full justify-start">
                             <CalendarIcon className="mr-2 h-4 w-4" />
                             {formData.deliveryDate ? format(formData.deliveryDate, 'PPP') : 'Select date'}
                           </Button>
                         </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0 z-50" align="start">
+                        <PopoverContent className="w-auto p-0">
                           <Calendar
                             mode="single"
                             selected={formData.deliveryDate}

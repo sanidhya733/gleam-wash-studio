@@ -48,21 +48,24 @@ const services = [
 const testimonials = [
   {
     name: 'Priya Sharma',
-    location: 'Delhi NCR',
+    location: 'Delhi',
     rating: 5,
     comment: 'Amazing service! My clothes come back perfectly clean and folded.',
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=64&h=64&fit=crop&crop=face'
   },
   {
     name: 'Rahul Kumar',
-    location: 'Delhi NCR',
+    location: 'Mumbai',
     rating: 5,
     comment: 'Super convenient pickup and delivery. Highly recommended!',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face'
   },
   {
     name: 'Sneha Patel',
-    location: 'Delhi NCR',
+    location: 'Bangalore',
     rating: 5,
     comment: 'Professional service with great attention to detail.',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face'
   },
 ];
 
@@ -181,14 +184,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <Button size="lg" className="gradient-hero text-white border-0" asChild>
-              <Link to="/services">
-                View All Services
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -257,11 +252,11 @@ export default function Home() {
               >
                 <Card className="p-6 hover-lift">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mr-3">
-                      <span className="text-white font-semibold text-lg">
-                        {testimonial.name.charAt(0)}
-                      </span>
-                    </div>
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-3"
+                    />
                     <div>
                       <div className="font-semibold">{testimonial.name}</div>
                       <div className="text-sm text-muted-foreground flex items-center">

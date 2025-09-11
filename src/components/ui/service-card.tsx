@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -68,10 +67,8 @@ export function ServiceCard({
           ))}
         </ul>
         
-        <Button className="w-full gradient-primary text-white border-0" asChild>
-          <Link to="/booking">
-            Select Service
-          </Link>
+        <Button className="w-full gradient-primary text-white border-0">
+          Select Service
         </Button>
       </div>
     </motion.div>

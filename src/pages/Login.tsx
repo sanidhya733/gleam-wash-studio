@@ -1,13 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { toast } from '@/components/ui/sonner';
-import { signInWithGoogle, signIn } from '@/lib/supabase';
 import { 
   Mail, 
   Lock, 
@@ -22,43 +19,10 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-
-  const handleGoogleSignIn = async () => {
-    try {
-      setIsLoading(true);
-      await signInWithGoogle();
-      toast.success('Redirecting to Google...');
-    } catch (error) {
-      toast.error('Failed to sign in with Google');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleEmailSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.email || !formData.password) {
-      toast.error('Please fill in all fields');
-      return;
-    }
-
-    try {
-      setIsLoading(true);
-      await signIn(formData.email, formData.password);
-      toast.success('Signed in successfully!');
-      navigate('/');
-    } catch (error) {
-      toast.error('Failed to sign in. Please check your credentials.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
@@ -170,13 +134,6 @@ export default function Login() {
               </div>
 
               <Button className="w-full gradient-hero text-white border-0" size="lg">
-              <Button 
-                className="w-full gradient-hero text-white border-0" 
-                size="lg"
-                onClick={handleEmailSignIn}
-                disabled={isLoading}
-              >
-                {isLoading ? 'Signing In...' : 'Sign In'}
                 Sign In
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -193,12 +150,7 @@ export default function Login() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-6">
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={handleGoogleSignIn}
-                  disabled={isLoading}
-                >
+                <Button variant="outline" className="w-full">
                   <Chrome className="mr-2 w-4 h-4" />
                   Google
                 </Button>
@@ -220,6 +172,4 @@ export default function Login() {
       </div>
     </div>
   );
-}
-  )
 }
