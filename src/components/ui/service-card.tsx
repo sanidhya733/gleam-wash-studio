@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { LucideIcon } from 'lucide-react';
@@ -67,8 +68,10 @@ export function ServiceCard({
           ))}
         </ul>
         
-        <Button className="w-full gradient-primary text-white border-0">
-          Select Service
+        <Button className="w-full gradient-primary text-white border-0" asChild>
+          <Link to="/booking">
+            Select Service
+          </Link>
         </Button>
       </div>
     </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -187,8 +188,11 @@ export default function Pricing() {
                             ? 'gradient-hero text-white border-0' 
                             : 'gradient-primary text-white border-0'
                         }`}
+                        asChild
                       >
-                        Choose {plan.name}
+                        <Link to="/booking">
+                          Choose {plan.name}
+                        </Link>
                       </Button>
                     </Card>
                   </motion.div>
@@ -356,8 +360,10 @@ export default function Pricing() {
             <p className="text-xl text-muted-foreground mb-8">
               Choose your plan or start with pay-per-use. No commitment required.
             </p>
-            <Button size="lg" className="gradient-hero text-white border-0">
-              Start Your First Order
+            <Button size="lg" className="gradient-hero text-white border-0" asChild>
+              <Link to="/booking">
+                Start Your First Order
+              </Link>
             </Button>
           </motion.div>
         </div>

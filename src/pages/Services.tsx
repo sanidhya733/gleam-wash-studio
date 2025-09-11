@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ServiceCard } from '@/components/ui/service-card';
@@ -225,8 +226,10 @@ export default function Services() {
             <p className="text-xl text-muted-foreground mb-8">
               Choose your preferred service and schedule a pickup today
             </p>
-            <Button size="lg" className="gradient-hero text-white border-0">
-              Book Service Now
+            <Button size="lg" className="gradient-hero text-white border-0" asChild>
+              <Link to="/booking">
+                Book Service Now
+              </Link>
             </Button>
           </motion.div>
         </div>

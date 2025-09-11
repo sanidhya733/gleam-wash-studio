@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { toast } from '@/components/ui/sonner';
-import { signInWithGoogle, signIn } from '@/lib/supabase';
+import { signInWithGoogle, signUp } from '@/lib/supabase';
 import { 
   Mail, 
   Lock, 
@@ -16,17 +16,19 @@ import {
   Shirt, 
   ArrowRight,
   Chrome,
-  Facebook
+  Facebook,
+  User
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   });
 
   const handleGoogleSignIn = async () => {
@@ -41,20 +43,30 @@ export default function Login() {
     }
   };
 
-  const handleEmailSignIn = async (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email || !formData.password) {
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      toast.error('Password must be at least 6 characters');
       return;
     }
 
     try {
       setIsLoading(true);
-      await signIn(formData.email, formData.password);
-      toast.success('Signed in successfully!');
-      navigate('/');
+      await signUp(formData.email, formData.password);
+      toast.success('Account created successfully! Please check your email for verification.');
+      navigate('/login');
     } catch (error) {
-      toast.error('Failed to sign in. Please check your credentials.');
+      toast.error('Failed to create account. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -79,18 +91,18 @@ export default function Login() {
             </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Welcome
+              Join
               <span className="block gradient-hero bg-clip-text text-transparent">
-                Back
+                LaundryPro
               </span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Sign in to manage your laundry orders, track deliveries, and access premium features.
+              Create your account and start enjoying premium laundry services with free pickup and delivery.
             </p>
           </div>
           
           <div className="glass-card p-6">
-            <h3 className="text-lg font-semibold mb-4">Why choose LaundryPro?</h3>
+            <h3 className="text-lg font-semibold mb-4">What you'll get:</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -108,7 +120,7 @@ export default function Login() {
           </div>
         </motion.div>
 
-        {/* Right Side - Login Form */}
+        {/* Right Side - Signup Form */}
         <motion.div
           className="flex items-center justify-center"
           initial={{ opacity: 0, x: 40 }}
@@ -117,11 +129,26 @@ export default function Login() {
         >
           <Card className="w-full max-w-md p-8">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2">Sign In</h2>
-              <p className="text-muted-foreground">Enter your credentials to access your account</p>
+              <h2 className="text-2xl font-bold mb-2">Create Account</h2>
+              <p className="text-muted-foreground">Sign up to get started with LaundryPro</p>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSignUp}>
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Enter your full name"
+                    className="pl-10"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  />
+                </div>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
                 <div className="relative">
@@ -129,7 +156,7 @@ export default function Login() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="sanidhya733@gmail.com"
+                    placeholder="Enter your email"
                     className="pl-10"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -144,7 +171,7 @@ export default function Login() {
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Enter your password"
+                    placeholder="Create a password"
                     className="pl-10 pr-10"
                     value={formData.password}
                     onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
@@ -159,25 +186,32 @@ export default function Login() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input type="checkbox" className="rounded" />
-                  <span>Remember me</span>
-                </label>
-                <Link to="/forgot-password" className="text-primary hover:underline">
-                  Forgot password?
-                </Link>
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    className="pl-10"
+                    value={formData.confirmPassword}
+                    onChange={(e) => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                  />
+                </div>
               </div>
 
-              <Button className="w-full gradient-hero text-white border-0" size="lg">
+              <div className="text-xs text-muted-foreground">
+                By creating an account, you agree to our Terms of Service and Privacy Policy.
+              </div>
+
               <Button 
+                type="submit"
                 className="w-full gradient-hero text-white border-0" 
                 size="lg"
-                onClick={handleEmailSignIn}
                 disabled={isLoading}
               >
-                {isLoading ? 'Signing In...' : 'Sign In'}
-                Sign In
+                {isLoading ? 'Creating Account...' : 'Create Account'}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </form>
@@ -198,11 +232,12 @@ export default function Login() {
                   className="w-full"
                   onClick={handleGoogleSignIn}
                   disabled={isLoading}
+                  type="button"
                 >
                   <Chrome className="mr-2 w-4 h-4" />
                   Google
                 </Button>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full" disabled>
                   <Facebook className="mr-2 w-4 h-4" />
                   Facebook
                 </Button>
@@ -210,9 +245,9 @@ export default function Login() {
             </div>
 
             <div className="text-center mt-6 text-sm">
-              <span className="text-muted-foreground">Don't have an account? </span>
-              <Link to="/signup" className="text-primary hover:underline font-medium">
-                Sign up
+              <span className="text-muted-foreground">Already have an account? </span>
+              <Link to="/login" className="text-primary hover:underline font-medium">
+                Sign in
               </Link>
             </div>
           </Card>
