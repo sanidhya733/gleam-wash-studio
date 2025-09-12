@@ -92,9 +92,9 @@ export default function About() {
             </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Passionate About
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              <div>
                 Laundry Excellence
-              </span>
+              </div>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               Founded with a mission to provide premium laundry services that combine 
