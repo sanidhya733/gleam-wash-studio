@@ -85,9 +85,9 @@ export default function Contact() {
             </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               We're Here to
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              <div>
                 Help You
-              </span>
+              </div>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Have questions about our services? Need support with your order? 
