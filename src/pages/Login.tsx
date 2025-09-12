@@ -24,19 +24,6 @@ export default function Login() {
     password: ''
   });
 
-  return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl w-full">
-        {/* Left Side - Branding */}
-        <motion.div
-          className="flex flex-col justify-center space-y-8"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          
-            
-            </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Welcome
