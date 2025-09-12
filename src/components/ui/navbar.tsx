@@ -75,7 +75,7 @@ export function Navbar() {
                   className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActive
                       ? 'text-primary font-medium'
-                      : 'text-muted-foreground hover:text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
                   }`}
                 >
                   {isActive && (
@@ -132,7 +132,7 @@ export function Navbar() {
                     className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-300 ${
                       isActive
                         ? 'gradient-primary text-white'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

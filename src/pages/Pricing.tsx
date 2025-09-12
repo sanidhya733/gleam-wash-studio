@@ -187,6 +187,7 @@ export default function Pricing() {
                             ? 'gradient-hero text-white border-0' 
                             : 'gradient-primary text-white border-0'
                         }`}
+                        onClick={() => window.location.href = '/booking'}
                       >
                         Choose {plan.name}
                       </Button>
@@ -356,7 +357,11 @@ export default function Pricing() {
             <p className="text-xl text-muted-foreground mb-8">
               Choose your plan or start with pay-per-use. No commitment required.
             </p>
-            <Button size="lg" className="gradient-hero text-white border-0">
+            <Button 
+              size="lg" 
+              className="gradient-hero text-white border-0"
+              onClick={() => window.location.href = '/booking'}
+            >
               Start Your First Order
             </Button>
           </motion.div>

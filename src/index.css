@@ -157,6 +157,33 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Remove default focus outlines and add custom ones */
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Fix any unwanted blue lines/borders */
+  input:not([class*="border"]), 
+  button:not([class*="border"]), 
+  select:not([class*="border"]), 
+  textarea:not([class*="border"]) {
+    border: none !important;
+  }
+
+  input:focus, 
+  button:focus, 
+  select:focus, 
+  textarea:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
+  }
 }
 
 @layer utilities {

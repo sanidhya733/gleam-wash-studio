@@ -67,7 +67,10 @@ export function ServiceCard({
           ))}
         </ul>
         
-        <Button className="w-full gradient-primary text-white border-0">
+        <Button 
+          className="w-full gradient-primary text-white border-0"
+          onClick={() => window.location.href = '/booking'}
+        >
           Select Service
         </Button>
       </div>
