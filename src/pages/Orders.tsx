@@ -90,7 +90,7 @@ export default function Orders() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl font-bold mb-4">
-            Your <span className="gradient-hero bg-clip-text text-transparent">Orders</span>
+            Your Orders
           </h1>
           <p className="text-xl text-muted-foreground">
             Track and manage all your laundry orders in one place
