@@ -24,6 +24,25 @@ export default function Login() {
     password: ''
   });
 
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <div className="container mx-auto px-4 py-8 lg:py-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Welcome Content */}
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Shirt className="w-8 h-8 text-primary" />
+              </div>
+              <span className="text-2xl font-bold">LaundryPro</span>
+            </div>
+            
+            <div>
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Welcome
@@ -34,9 +53,9 @@ export default function Login() {
             <p className="text-xl text-muted-foreground">
               Sign in to manage your laundry orders, track deliveries, and access premium features.
             </p>
-          </div>
+            </div>
           
-          <div className="glass-card p-6">
+            <div className="glass-card p-6">
             <h3 className="text-lg font-semibold mb-4">Why choose LaundryPro?</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
@@ -52,7 +71,7 @@ export default function Login() {
                 <span>24/7 order tracking and support</span>
               </div>
             </div>
-          </div>
+            </div>
         </motion.div>
 
         {/* Right Side - Login Form */}
@@ -152,6 +171,10 @@ export default function Login() {
             </div>
           </Card>
         </motion.div>
+        </div>
+      </div>
+    </div>
+  );
       </div>
     </div>
   );
