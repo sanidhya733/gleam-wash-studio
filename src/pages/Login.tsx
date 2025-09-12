@@ -39,7 +39,7 @@ export default function Login() {
               <div className="gradient-hero w-12 h-12 rounded-2xl flex items-center justify-center">
                 <Shirt className="w-7 h-7 text-white" />
               </div>
-              <span className="text-2xl font-bold">LaundryPro</span>
+            
             </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
