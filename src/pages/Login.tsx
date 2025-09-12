@@ -34,11 +34,7 @@ export default function Login() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="gradient-hero w-12 h-12 rounded-2xl flex items-center justify-center">
-                <Shirt className="w-7 h-7 text-white" />
-              </div>
+          
             
             </div>
             
