@@ -46,7 +46,7 @@ export default function Login() {
               Welcome
               <div>
                 Back
-              <div>
+              </div>
             </h1>
             <p className="text-xl text-muted-foreground">
               Sign in to manage your laundry orders, track deliveries, and access premium features.
