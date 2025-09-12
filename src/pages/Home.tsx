@@ -108,9 +108,9 @@ export default function Home() {
             </Badge>
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Professional
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              
                 Laundry Care
-              </span>
+          
               at Your Doorstep
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
