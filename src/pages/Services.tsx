@@ -104,9 +104,9 @@ export default function Services() {
             </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Our Laundry
-              <span>
+              <div>
                 Services
-              </span>
+              </div>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               From basic wash and fold to premium dry cleaning, we offer comprehensive 
