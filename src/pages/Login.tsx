@@ -121,7 +121,7 @@ export default function Login() {
               ) : (
                 <>
                   Welcome
-                  <div className="gradient-hero bg-clip-text text-transparent">
+                  <div>
                     Back
                   </div>
                 </>
