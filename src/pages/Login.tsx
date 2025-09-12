@@ -44,9 +44,9 @@ export default function Login() {
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Welcome
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              <div>
                 Back
-              </span>
+              <div>
             </h1>
             <p className="text-xl text-muted-foreground">
               Sign in to manage your laundry orders, track deliveries, and access premium features.
