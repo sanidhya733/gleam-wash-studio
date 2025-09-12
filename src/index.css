@@ -248,11 +248,19 @@
 
   /* Hover Effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-md;
   }
 
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-xl;
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* Remove unwanted focus/hover states */
+  .no-focus-ring:focus,
+  .no-focus-ring:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: hsl(var(--border)) !important;
   }
 }
 

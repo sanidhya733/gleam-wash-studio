@@ -175,7 +175,14 @@ export default function Contact() {
                     />
                   </div>
                   
-                  <Button className="w-full gradient-hero text-white border-0" size="lg">
+                  <Button 
+                    className="w-full gradient-hero text-white border-0" 
+                    size="lg"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Message sent successfully! We will get back to you within 24 hours.');
+                    }}
+                  >
                     <Send className="w-4 h-4 mr-2" />
                     Send Message
                   </Button>
@@ -243,7 +250,11 @@ export default function Contact() {
                     </div>
                   ))}
                 </div>
-                <Button variant="outline" className="w-full mt-6">
+                <Button 
+                  variant="outline" 
+                  className="w-full mt-6"
+                  onClick={() => alert('FAQ section will be available soon with detailed answers to all common questions!')}
+                >
                   View All FAQs
                 </Button>
               </Card>
@@ -272,7 +283,11 @@ export default function Contact() {
                   <p className="text-muted-foreground">
                     Interactive map will be integrated here
                   </p>
-                  <Button variant="outline" className="mt-4">
+                  <Button 
+                    variant="outline" 
+                    className="mt-4"
+                    onClick={() => window.open('https://maps.google.com/search/KIET Group of Institutions, Muradnagar, Ghaziabad', '_blank')}
+                  >
                     Get Directions
                   </Button>
                 </div>
@@ -296,7 +311,11 @@ export default function Contact() {
             <p className="text-xl text-muted-foreground mb-8">
               Don't wait! Book your first pickup and see why thousands trust us with their laundry
             </p>
-            <Button size="lg" className="gradient-hero text-white border-0">
+            <Button 
+              size="lg" 
+              className="gradient-hero text-white border-0"
+              onClick={() => window.location.href = '/booking'}
+            >
               Book Your First Order
             </Button>
           </motion.div>

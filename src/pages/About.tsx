@@ -313,10 +313,18 @@ export default function About() {
               Experience the difference that professional care and genuine passion make
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="gradient-hero text-white border-0">
+              <Button 
+                size="lg" 
+                className="gradient-hero text-white border-0"
+                onClick={() => window.location.href = '/booking'}
+              >
                 Book Your First Order
               </Button>
-              <Button size="lg" variant="outline">
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => window.location.href = '/contact'}
+              >
                 Contact Our Team
               </Button>
             </div>

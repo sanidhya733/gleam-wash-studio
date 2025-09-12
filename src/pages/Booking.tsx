@@ -130,7 +130,7 @@ export default function Booking() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Card className="p-8">
+          <Card className="p-8 glass-card border-0">
             {/* Step 1: Service Selection */}
             {currentStep === 1 && (
               <div>
@@ -363,10 +363,14 @@ export default function Booking() {
                   className="w-full gradient-hero text-white border-0"
                   onClick={() => {
                     // Handle booking confirmation
-                    alert('Booking confirmed! You will receive a confirmation SMS shortly.');
+                    alert('🎉 Booking confirmed! You will receive a confirmation SMS shortly. We will contact you at ' + formData.phone + ' for pickup confirmation.');
+                    // Redirect to orders page after confirmation
+                    setTimeout(() => {
+                      window.location.href = '/orders';
+                    }, 2000);
                   }}
                 >
-                  Confirm Booking
+                  Confirm Booking & Pay ₹{estimatedPrice}
                 </Button>
               </div>
             )}
@@ -384,18 +388,18 @@ export default function Booking() {
               </Button>
               
               {currentStep < 4 ? (
-                <Button 
-                  onClick={nextStep}
-                  className="gradient-primary text-white border-0 flex items-center"
-                  disabled={
-                    (currentStep === 1 && (!formData.service || !formData.weight)) ||
-                    (currentStep === 2 && (!formData.pickupDate || !formData.pickupTime || !formData.deliveryDate || !formData.deliveryTime)) ||
-                    (currentStep === 3 && (!formData.phone || !formData.address))
-                  }
-                >
-                  Next
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+                  <Button 
+                    onClick={nextStep}
+                    className="gradient-hero text-white border-0 flex items-center"
+                    disabled={
+                      (currentStep === 1 && (!formData.service || !formData.weight)) ||
+                      (currentStep === 2 && (!formData.pickupDate || !formData.pickupTime || !formData.deliveryDate || !formData.deliveryTime)) ||
+                      (currentStep === 3 && (!formData.phone || !formData.address))
+                    }
+                  >
+                    Next Step
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
               ) : (
                 <div /> // Empty div to maintain layout
               )}

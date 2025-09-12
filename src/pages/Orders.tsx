@@ -120,7 +120,10 @@ export default function Orders() {
                     <p className="text-muted-foreground mb-6">
                       You don't have any orders in this category yet.
                     </p>
-                    <Button className="gradient-hero text-white border-0">
+                    <Button 
+                      className="gradient-hero text-white border-0"
+                      onClick={() => window.location.href = '/booking'}
+                    >
                       Create New Order
                     </Button>
                   </Card>
@@ -228,18 +231,30 @@ export default function Orders() {
 
                           {/* Actions */}
                           <div className="flex flex-col space-y-2">
-                            <Button variant="outline" size="sm">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => alert(`Viewing details for order ${order.id}`)}
+                            >
                               <Eye className="w-4 h-4 mr-2" />
                               View Details
                             </Button>
                             {order.status === 'delivered' && (
-                              <Button variant="outline" size="sm">
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                onClick={() => alert(`Downloading receipt for order ${order.id}`)}
+                              >
                                 <Download className="w-4 h-4 mr-2" />
                                 Download Receipt
                               </Button>
                             )}
                             {order.status === 'in-process' && (
-                              <Button variant="outline" size="sm">
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                onClick={() => alert(`Tracking order ${order.id}. Current status: ${order.status}`)}
+                              >
                                 <Truck className="w-4 h-4 mr-2" />
                                 Track Order
                               </Button>
@@ -268,11 +283,17 @@ export default function Orders() {
               Contact our support team for any questions about your orders
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="gradient-primary text-white border-0">
+              <Button 
+                className="gradient-primary text-white border-0"
+                onClick={() => window.open('tel:+916307225600', '_self')}
+              >
                 <Phone className="mr-2 w-4 h-4" />
                 Call Support: +91 6307225600
               </Button>
-              <Button variant="outline">
+              <Button 
+                variant="outline"
+                onClick={() => window.location.href = '/booking'}
+              >
                 Create New Order
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
