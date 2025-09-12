@@ -1,35 +1,52 @@
-// Placeholder Supabase functions for demo purposes
-// Replace with actual Supabase integration when ready
+import { createClient } from '@supabase/supabase-js';
 
-export const supabase = {
-  auth: {
-    signInWithOAuth: () => Promise.resolve({ data: null, error: null }),
-    signUp: () => Promise.resolve({ data: null, error: null }),
-    signInWithPassword: () => Promise.resolve({ data: null, error: null }),
-    signOut: () => Promise.resolve({ error: null })
-  }
-};
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export async function signInWithGoogle() {
-  // Placeholder function - replace with actual Google OAuth
-  console.log('Google login placeholder - integrate with actual Supabase');
-  return { data: null, error: null };
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/`
+    }
+  });
+  return { data, error };
 }
 
 export async function signUp(email: string, password: string) {
-  // Placeholder function - replace with actual signup
-  console.log('Signup placeholder:', email);
-  return { data: { user: { email } }, error: null };
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: `${window.location.origin}/login`
+    }
+  });
+  return { data, error };
 }
 
 export async function signIn(email: string, password: string) {
-  // Placeholder function - replace with actual signin
-  console.log('Signin placeholder:', email);
-  return { data: { user: { email } }, error: null };
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+  return { data, error };
 }
 
 export async function signOut() {
-  // Placeholder function - replace with actual signout
-  console.log('Signout placeholder');
-  return { error: null };
+  const { error } = await supabase.auth.signOut();
+  return { error };
+}
+
+export async function getCurrentUser() {
+  const { data: { user }, error } = await supabase.auth.getUser();
+  return { user, error };
+}
+
+export async function resetPassword(email: string) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/reset-password`
+  });
+  return { data, error };
 }
