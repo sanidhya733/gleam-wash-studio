@@ -120,9 +120,9 @@ export default function Pricing() {
             </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Simple, Fair
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              <div>
                 Pricing
-              </span>
+              </div>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Choose from our flexible plans or pay per service. No hidden fees, 
