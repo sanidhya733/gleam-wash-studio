@@ -79,9 +79,9 @@ export default function Booking() {
           </Badge>
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">
             Schedule Your
-            <span className="block gradient-hero bg-clip-text text-transparent">
+            <div>
               Laundry Pickup
-            </span>
+            </div>
           </h1>
           <p className="text-xl text-muted-foreground">
             Easy 4-step booking process to get your laundry picked up and delivered
