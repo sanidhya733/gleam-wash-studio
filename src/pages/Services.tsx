@@ -104,7 +104,7 @@ export default function Services() {
             </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Our Laundry
-              <span className="block gradient-hero bg-clip-text text-transparent">
+              <span>
                 Services
               </span>
             </h1>
